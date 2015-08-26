@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <title>Hello AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script type="text/javascript">
+        function Hello($scope, $http) {
+            $http.get('http://api.webron.social/TFF/GetActualList').
+                success(function (data) {
+                    console.log(data);
+                    $scope.teams = data;
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <div ng-controller="Hello">
+        <div ng-repeat="team in teams">
+            {{team.Name}} - {{team.Point}}<br />
+        </div>
+    </div>
+</body>
+</html>
